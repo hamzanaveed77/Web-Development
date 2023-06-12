@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Student Detail</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .car-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid #fdd835;
+}
+
+.card {
+  position: relative;
+  padding-top: 100px;
+}
+
+.card-body {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+  color: #212121;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  color: #757575;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="container" style="margin-top: 180px;">
+    <div class="card">
+      <img src="/images/<%=data.image%>" alt="Car Image" class="car-image">
+      <div class="card-body text-center">
+        <h2 class="card-title">Student Detail</h2>
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <p class="card-text"><strong>Name:</strong> <%=data.name%></p>
+            <p class="card-text"><strong>Email:</strong> <%=data.email%></p>
+            <p class="card-text"><strong>Phone:</strong> <%=data.phone%></p>
+            <p class="card-text"><strong>Degree:</strong> <%=data.degree%></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

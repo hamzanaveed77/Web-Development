@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./practice.js"></script>
+    <link rel="stylesheet" href="./public/css/practice.css">
+
+</head>
+<body>
+    <div class="bg">
+    <div class="container">
+        <div class="inner">
+        <p class="Para">Create your Account to buy a cat</p>
+        <input type="text" id="name" class="ABC" placeholder="Enter your name">
+        <input type="text" id="registration" class="ABC" placeholder="Enter your CNIC No">
+        <input type="text" id="batch" class="ABC" placeholder="What kind of cat do you want">
+        <input type="email" id="email" class="ABC" placeholder="Enter your Email">
+        <input type="number" id="number" class="ABC" placeholder="Enter your number">
+        <button id="btn" onclick="buttonAction()">Submit</button>
+        <button id="clearBtn">Clear</button>
+        </div>
+
+    </div>
+    </div>
+    <script>
+        document.getElementById('clearBtn').addEventListener('click', function() {
+            document.getElementById('name').value = '';
+            document.getElementById('registration').value = '';
+            document.getElementById('batch').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('number').value = '';
+        });
+    </script>
+</body>
+</html>

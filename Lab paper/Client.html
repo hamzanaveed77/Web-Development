@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Posts</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./styling.css">
+  <script>
+    $(document).ready(function() {
+      // Function to list existing records on your page for result...........
+      function listRecords() {
+        $.ajax({
+          url: "http://localhost:3002/posts",
+          type: "GET",
+          dataType: "json",
+          success: function(response) {
+            for (var i = 0; i < response.length; i++) {
+              var record = response[i];
+              var title = record.title;
+              var content = record.content;
+              var author = record.author;
+              var listItem = $("<li>").text("Title: " + title + ", Content: " + content + ", Author: " + author);
+              $("#records-list").append(listItem);
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log("Error: " + error);
+          }
+        });
+      }
+
+
+
+
+
+
+
+
+      listRecords();
+      
+      // Form submission to create a new record from your page to show it on your existing...........
+      $("form").submit(function(event) {
+        event.preventDefault();
+        var title = $("#title").val();
+        var content = $("#content").val();
+        var author = $("#author").val();
+        
+        $.ajax({
+          url: "http://localhost:3002/posts",
+          type: "POST",
+          dataType: "json",
+          data: JSON.stringify({ title, content, author }),
+          contentType: "application/json",
+          success: function(response) {
+            var newRecord = response;
+            var listItem = $("<li>").text("Title: " + newRecord.title + ", Content: " + newRecord.content + ", Author: " + newRecord.author);
+            $("#records-list").append(listItem);
+            // Clear the form fields for another record
+            $("#title").val("");
+            $("#content").val("");
+            $("#author").val("");
+          },
+          error: function(xhr, status, error) {
+            console.log("Error: " + error);
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+
+
+//
+
+
+<body>
+  <h1>Blog Posts</h1>
+  
+  <h2>Existing Records:</h2>
+  <ul id="records-list"></ul>
+  
+  <h2>Create New Record:</h2>
+  <form>
+    <label for="title">Title:</label>
+    <input type="text" id="title" required><br>
+    
+    <label for="content">Content:</label>
+    <textarea id="content" required></textarea><br>
+    
+    <label for="author">Author:</label>
+    <input type="text" id="author" required><br>
+    
+    <button type="submit">Create</button>
+  </form>
+</body>
+</html>
